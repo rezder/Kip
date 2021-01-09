@@ -1,102 +1,15 @@
-<svg
-   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 500 500"
-   height="100%"
-   width="100%">
-  <defs
-     id="defs2">
-    <linearGradient
-       osb:paint="solid"
-       id="linearGradient7155">
-      <stop
-         id="stop7153"
-         offset="0"
-         style="stop-color:#6d6d6d;stop-opacity:1;" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient4577">
-      <stop
-         id="stop4573"
-         offset="0"
-         style="stop-color:#000000;stop-opacity:1;" />
-      <stop
-         id="stop4575"
-         offset="1"
-         style="stop-color:#00ff00;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient4531">
-      <stop
-         id="stop4527"
-         offset="0"
-         style="stop-color:#000000;stop-opacity:1;" />
-      <stop
-         id="stop4529"
-         offset="1"
-         style="stop-color:#ff0000;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient
-       gradientTransform="matrix(2.8224789,0,0,3.1328816,63.162412,-305.20054)"
-       gradientUnits="userSpaceOnUse"
-       y2="224.23956"
-       x2="54.239582"
-       y1="225.35588"
-       x1="45.772915"
-       id="linearGradient4533"
-       xlink:href="#linearGradient4531" />
-    <linearGradient
-       gradientTransform="matrix(2.8224789,0,0,3.1328816,63.162412,-305.20054)"
-       gradientUnits="userSpaceOnUse"
-       y2="225.35588"
-       x2="86.518745"
-       y1="234.82291"
-       x1="79.375"
-       id="linearGradient4579"
-       xlink:href="#linearGradient4577" />
-  </defs>
-
-  <!-- wind sectors -->
-  <g
-     style="display:inline"
-     id="layer7"
-     *ngIf="windSectorEnable">
-    <path *ngIf="portWindSectorPath != 'none'"
-       [attr.d]="portWindSectorPath"
-       id="path7337"
-       class="wind-sector-port"
-       style=";fill-opacity:0.80952382;stroke:#000000;stroke-width:1.86536205;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.48351668" />
-    <path *ngIf="stbdWindSectorPath != 'none'"
-       [attr.d]="stbdWindSectorPath"
-       class="wind-sector-stbd"
-       style="fill-opacity:0.79487179;stroke:#000000;stroke-width:1.86536205;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.48351668"
-       id="path7339"/>
-  </g>
-  <!-- laylines -->
-  <g
-     style="display:inline"
-     id="layer8"
-     *ngIf="laylineEnable">
-    <path *ngIf="trueWindAngle != null"
-       id="path177"
-       class="laylines"
-       [attr.d]="laylinePortPath"
-       style="fill:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:7" />
-      
-    <path *ngIf="trueWindAngle != null"
-       class="laylines"
-       style="fill:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:7"
-       [attr.d]="laylineStbdPath"
-       id="path984" />
-
-  </g>
+<svg xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     id="svg8"
+     version="1.1"
+     viewBox="0 0 500 500"
+     height="100%"
+     width="100%">
 
   <!-- Background -->
   <g
@@ -372,31 +285,6 @@
        cx="250"
        id="path7341"
        style="display:inline;fill:none;fill-opacity:0.80952382;stroke:#000000;stroke-width:6.01955366;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.71794876" />
-    <g
-       transform="matrix(0.77971535,0,0,0.8869868,54.51446,44.009958)"
-       id="g4694"
-       style="display:inline">
-      <path
-         class="boatBackground"
-         style="fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 250,294.70832 -5,10 -50,195 v 10 l 3,1 h 107 v -9 l -53,-206 -2,-1"
-         id="path4686" />
-      <path
-         class="boatBackground"
-         style="display:inline;fill-opacity:1;stroke:#000000;stroke-width:3.14709449;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 193.84906,509.2181 c 0,0 0,-165.78166 56.00857,-215.51616"
-         id="path3703" />
-      <path
-        class="boatBackground"
-         style="display:inline;fill-opacity:1;stroke:#000000;stroke-width:3.14709449;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 305.86619,509.2181 c 0,0 0,-165.78166 -56.00856,-215.51616"
-         id="path3703-6" />
-      <path
-        class="boatBackground"
-         style="display:inline;fill-opacity:1;stroke:#000000;stroke-width:3.14709449;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 193.84906,509.2181 c 0,0 52.27466,70.45719 112.01713,0"
-         id="path4525" />
-    </g>
   </g>
 
   <!-- compass --> 
@@ -832,56 +720,30 @@
       fill="freeze"
       />
   </g>
-
-
-
-  <!-- True Wind Indicator -->
+  <!-- Direction -->
   <g
-    *ngIf="trueWindAngle != null"
+      id="layer10"
+      style="display:inline">
+      <path class="compass-outer-ring"
+          id="path1063-3"
+          style="display:inline;opacity:0.5;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+          d="m 249.71936,1.0653694 c -5.50488,3.6068987 -11.01068,7.2119406 -16.5179,10.8167786 -7.48125,1.696723 -22.44807,5.0867 -22.44807,5.0867 l 10.07783,88.800422 58.47897,0.17788 9.37516,-88.978302 c -7.48349,-1.694592 -14.96683,-3.389978 -22.44809,-5.0867 -5.5072,-3.604838 -11.013,-7.2098799 -16.5179,-10.8167786 z" />
+  </g>
+
+
+  <!-- Way Pooint Indicator -->
+  <g
+    *ngIf="pointBearing != null"
     style="display:inline"
-    id="layer4">
-    <g
-      transform="rotate(179.60924,249.75622,83.659984)"
-      id="g1187">
-      <g class="true-wind"
-        transform="matrix(-5.1082345,0,0,-4.5354333,587.61946,139.05361)"
-        id="g7361"
-        style="display:inline;fill-opacity:1">
-        <path class="true-wind"
-          d="M 62.243972,4.0584953 A 3.9408352,3.9073367 0 0 1 66.184807,0.15115881 3.9408352,3.9073367 0 0 1 70.125642,4.0584955"
-          id="path7357"
-          style="fill-opacity:1;stroke:#000000;stroke-width:0.30782673;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <path class="true-wind"
-          id="path7359"
-          d="m 62.177083,3.96875 3.968749,6.614583 3.96875,-6.614583"
-          style="fill-opacity:1;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      </g>
-      <text class="wind-text"
-        transform="scale(-1.0096233,-0.99046843)"
-        id="text7365"
-        y="-117.71236"
-        x="-247.47594"
-        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.02742887"
-        xml:space="preserve"><tspan
-          id="tspan7417"
-          x="-247.47594"
-          y="-117.71236">{{ trueWindSpeedDisplay }}</tspan></text>
-      <text class="wind-text"
-        xml:space="preserve"
-        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-        x="-252.43172"
-        y="-103.49368"
-        id="text1173"
-        transform="scale(-1)"><tspan
-          id="tspan1171"
-          x="-252.43172"
-          y="-103.49368">T</tspan>
-      </text>
-    </g>
-    <animateTransform #trueWindAnimate attributeName="transform"
+      id="layer4">
+      <path class="route-mark"
+          id="path1063"
+          style="opacity:1;fill:#ffff00;fill-opacity:0.5;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+          d="m 249.71936,4.537849 c -4.94238,3.383386 -9.88559,6.76503 -14.83007,10.146484 -6.71681,1.59158 -20.1543,4.771485 -20.1543,4.771485 l 9.04806,83.297622 52.5035,0.16685 8.41719,-83.464472 c -6.71881,-1.58958 -13.43749,-3.179906 -20.1543,-4.771485 -4.94448,-3.381454 -9.88768,-6.763098 -14.83008,-10.146484 z m -0.004,25.501953 c 8.24583,0.510676 24.29406,2.325203 24.29406,2.325203 l -5.33488,59.935905 c -6.65411,-0.33592 -12.28725,-0.90937 -18.9435,-1.2473 -6.62906,0.54492 -11.93582,0.65112 -18.63054,1.19403 l -4.61186,-60.253544 c 8.23138,-0.345106 14.99734,-1.607188 23.22672,-1.954294 z" />
+    <animateTransform #routeAnimate attributeName="transform"
       type="rotate"
-      [attr.from]="oldTrueWindRotateAngle+' 250 250'"
-      [attr.to]="newTrueWindRotateAngle+' 250 250'"
+      [attr.from]="oldPointBearingStr+' 250 250'"
+      [attr.to]="newPointBearingStr+' 250 250'"
       begin="indefinite"
       dur="0.1s"
       additive="replace"
@@ -889,80 +751,86 @@
       />
   </g>
 
-  <!-- App Wind Indicator -->
+ 
+  <!-- Route -->
   <g
-    *ngIf="appWindAngle != null"
     style="display:inline"
-    id="layer5">
-    <g
-    id="g1169">
-      <g class="app-wind"
-          style="display:inline;fill-opacity:1"
-          id="g7280"
-          transform="matrix(-5.1082345,0,0,-4.5354333,587.61946,139.05361)">
-        <path class="app-wind"
-            style="fill-opacity:1;stroke:#000000;stroke-width:0.30782673;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-            id="path7276"
-            d="M 62.243972,4.0584953 A 3.9408352,3.9073367 0 0 1 66.184807,0.15115881 3.9408352,3.9073367 0 0 1 70.125642,4.0584955" />
-        <path class="app-wind"
-            style="fill-opacity:1;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-            d="m 62.177083,3.96875 3.968749,6.614583 3.96875,-6.614583"
-            id="path7278" />
-      </g>
+      id="layer3">
+      <rect class="heading-background"
+       style="fill-opacity:1;stroke:#040404;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7151-9"
+       width="148"
+       height="62"
+       x="176"
+       y="121.5"
+       rx="11.269348"
+       ry="16.533333" />
       <text class="wind-text"
-          xml:space="preserve"
-          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill-opacity:1;stroke:none;stroke-width:1.02742887"
-          x="-247.70137"
-          y="-117.30515"
-          id="text7287"
-          transform="scale(-1.0096233,-0.99046843)"><tspan
-            id="tspan7435"
-            x="-247.70137"
-            y="-117.30515">{{ appWindSpeedDisplay }}</tspan></text>
-      <text class="wind-text"
-          xml:space="preserve"
-          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill-opacity:1;stroke:none"
-          x="-253.04364"
-          y="-103.33408"
-          id="text1155"
-          transform="scale(-1)"><tspan
-            id="tspan1153"
-            x="-253.04364"
-            y="-103.33408">A</tspan></text>
-    </g>
-    <animateTransform #appWindAnimate attributeName="transform"
-      type="rotate"
-      [attr.from]="oldAppWindAngle+' 250 250'"
-      [attr.to]="newAppWindAngle+' 250 250'"
-      begin="indefinite"
-      dur="0.1s"
-      additive="replace"
-      fill="freeze"
-      />
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:47.4439px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill-opacity:1;stroke:none;stroke-width:0.932682"
+       x="250"
+       y="170"
+       id="text7163-3"><tspan
+         id="tspan1435"
+         x="250"
+         y="170"
+         style="stroke-width:0.932682">{{ pointDistStr }}</tspan></text>
+    <rect class="heading-background"
+       style="fill-opacity:1;stroke:#040404;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7151-9-4-5"
+       width="177"
+       height="62"
+       x="161.5"
+       y="316.5"
+       rx="13.48571"
+       ry="16.533333" />
+    <text class="wind-text"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:47.4439px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill-opacity:1;stroke:none;stroke-width:0.932682"
+       x="250"
+       y="364"
+       id="text7163-3-5-4"><tspan
+         id="tspan1437"
+         x="250"
+         y="364"
+         style="stroke-width:0.932682">{{ pointID }}</tspan></text>
+    <rect class="heading-background"
+       style="fill-opacity:1;stroke:#040404;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7151-9-4-4"
+       width="37"
+       height="23"
+       x="332.64044"
+       y="160.65089"
+       rx="3.6366255"
+       ry="6.1333332" />
+    <text class="wind-text"
+       xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15.933px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill-opacity:1;stroke:none;stroke-width:0.932684"
+       x="348.30478"
+       y="179.08792"
+       id="text7163-3-5-43"
+       transform="scale(1.0087805,0.99129596)"><tspan
+       id="tspan1433"
+       x="348.30478"
+       y="179.08792"
+       style="stroke-width:0.932684">{{ pointDistUnit }}</tspan></text>
+    <rect class="heading-background"
+       style="fill-opacity:1;stroke:#040404;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7151-9-7"
+       width="284"
+       height="97"
+       x="108"
+       y="201.5"
+       rx="21.645777"
+       ry="25.866665" />
+    <text class="wind-text"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:47.4439px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill-opacity:1;stroke:none;stroke-width:0.932682"
+       x="250"
+       y="267"
+       id="text7163-3-5-4-8"><tspan
+       id="tspan1457"
+       x="250.00002"
+       y="267">{{ timeToArrivalStr }}</tspan></text>
   </g>
-
-  <!-- Heading -->
-  <g
-    style="display:inline"
-    id="layer3">
-   <rect class="heading-background"
-      ry="7.4823418"
-      rx="6.9066305"
-      y="64.10257"
-      x="203.85365"
-      height="28.058783"
-      width="90.649544"
-      id="rect7151"
-      style="fill-opacity:1;stroke:#040404;stroke-width:2.69577217;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-   <text class="wind-text"
-      transform="scale(1.0008524,0.99914832)"
-      id="text7163"
-      y="86.644958"
-      x="247.44287"
-      style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.38400078px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill-opacity:1;stroke:none;stroke-width:0.93268102"
-      xml:space="preserve"><tspan
-        y="86.644958"
-        x="247.44287"
-        id="tspan7406">{{ headingValue }}</tspan></text>
- </g>
 </svg>

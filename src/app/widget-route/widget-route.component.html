@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <app-svg-route
+        [compassHeading]="currentHeading"
+	[pointID]="pointID"
+        [pointBearing]="pointBearing"
+        [pointDist]="pointDist"
+        [pointVMG]="pointVMG"
+    ></app-svg-route>
+    <div class="settingsButton" *ngIf="unlockStatus">
+        <button  color="accent" mat-mini-fab class="selector-fab" (click)="openWidgetSettings()">
+            <span class="fa fa-cog"></span>
+        </button>
+    </div>
+</div>

@@ -83,6 +83,9 @@ import { SettingsNotificationsComponent } from './settings-notifications/setting
 import { SvgSimpleLinearGaugeComponent } from './svg-simple-linear-gauge/svg-simple-linear-gauge.component';
 import { WidgetSimpleLinearComponent } from './widget-simple-linear/widget-simple-linear.component';
 
+import { WidgetRouteComponent } from './widget-route/widget-route.component';
+import { SvgRouteComponent } from './svg-route/svg-route.component';
+
 const appRoutes: Routes = [
   { path: '', redirectTo: '/page/0', pathMatch: 'full' },
   { path: 'page/:id', component: RootDisplayComponent },
@@ -133,6 +136,8 @@ const appRoutes: Routes = [
     SettingsNotificationsComponent,
     SvgSimpleLinearGaugeComponent,
     WidgetSimpleLinearComponent,
+    WidgetRouteComponent,
+    SvgRouteComponent,
   ],
   imports: [
     BrowserModule,
@@ -180,6 +185,7 @@ const appRoutes: Routes = [
     WidgetTutorialComponent,
     WidgetAutopilotComponent,
     WidgetSimpleLinearComponent,
+    WidgetRouteComponent,
 
     //dialogs
     ModalWidgetComponent,

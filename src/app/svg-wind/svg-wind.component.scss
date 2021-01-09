@@ -66,6 +66,9 @@
     .app-wind {
         fill: mat-color($wind, app-wind-background)
     }
+    .route-mark {
+        fill: mat-color($wind, route-mark-background)
+    }
 }
 
 // for Autopilot

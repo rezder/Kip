@@ -15,6 +15,7 @@ import { WidgetGaugeNgLinearComponent} from './widget-gauge-ng-linear/widget-gau
 import { WidgetGaugeNgRadialComponent} from './widget-gauge-ng-radial/widget-gauge-ng-radial.component';
 import { WidgetAutopilotComponent } from "./widget-autopilot/widget-autopilot.component";
 import { WidgetSimpleLinearComponent } from "./widget-simple-linear/widget-simple-linear.component";
+import { WidgetRouteComponent } from "./widget-route/widget-route.component";
 
 class widgetInfo {
   name: string;
@@ -103,6 +104,11 @@ export class WidgetListService {
         name: 'WidgetTutorial',
         componentName: WidgetTutorialComponent,
         description: 'Tutorial'
+      },
+      {
+        name: 'WidgetRoute',
+        componentName: WidgetRouteComponent,
+        description: 'Waypoint Route'
       }
     ]
 
