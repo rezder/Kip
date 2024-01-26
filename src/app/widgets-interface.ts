@@ -190,8 +190,9 @@ export interface IWidgetSvcConfig {
   /** Use by racetimer widget */
   timerLength?: number;
 
-  /** Used by Rmb widget for warning distance */
+  /** Used by Rmb widget and Waypoint widget for warning distance */
   waypointWarnDist?: number;
+  /** Used by Rmb widget and Cross error track widget */
   crossTrackWarnDist?: number;
 }
 

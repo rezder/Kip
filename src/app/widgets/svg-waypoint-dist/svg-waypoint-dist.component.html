@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg1" width="100%" height="100%" viewBox="0 0 500 100" version="1.1">
+  <g id="layer2">
+    <ellipse id="path3" class="wdBoat" style="fill-opacity:1;stroke-width:1;stroke-dasharray:none" cx="35" cy="50" rx="5" ry="5" />
+  </g>
+  <g id="layer1">
+    <circle id="path4" class="wdLine" style="fill-opacity:1;stroke-width:4;stroke-dasharray:4, 4;stroke-dashoffset:0;stroke-opacity:1" cx="0" cy="0" r="100" transform="translate(35,50)">
+      <animateTransform #circleAnimate attributeName="transform"
+        type="scale"
+        [attr.from]="circle.scale.from"
+        [attr.to]="circle.scale.to"
+        begin="indefinite"
+        dur="0.5s"
+        additive="sum"
+        fill="freeze"
+      />
+    </circle>
+    <g id="g5">
+      <path id="use1" class="wdBoat" style="display:inline;fill-opacity:1;fill-rule:evenodd;stroke-width:0.969298px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 480.48465,50.01889 c 2.44348,3.85513 9.95617,7.901101 18.8246,9.496461 l 13.95396,-1e-5 c 3.09919,-2.35081 6.44617,-4.6456 6.24358,-9.496381 -4e-5,-4.79516 -3.10886,-7.134991 -6.24353,-9.496451 -5.08576,-0.0455 -9.63156,-0.0385 -14.0355,-0.0358 -8.78695,1.66707 -16.30925,5.638731 -18.74311,9.532091 z" />
+      <animateTransform #boatAnimate attributeName="transform"
+        type="translate"
+        [attr.from]="boat.move.from+' 0'"
+        [attr.to]="boat.move.to+' 0'"
+        begin="indefinite"
+        dur="0.5s"
+        additive="replace"
+        fill="freeze"
+      />
+    </g>
+  </g>
+</svg>

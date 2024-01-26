@@ -70,7 +70,7 @@ import { SettingsDatasetsComponent, SettingsDatasetsModalComponent } from './set
 import { SettingsSignalkComponent } from './settings/signalk/signalk.component';
 import { WidgetHistoricalComponent } from './widgets/widget-historical/widget-historical.component';
 import { LayoutSplitComponent } from './layout-split/layout-split.component';
-import { WidgetWindComponent, } from './widgets/widget-wind/widget-wind.component';
+import { WidgetWindComponent } from './widgets/widget-wind/widget-wind.component';
 import { SvgWindComponent } from './widgets/svg-wind/svg-wind.component';
 import { WidgetGaugeComponent } from './widgets/widget-gauge/widget-gauge.component';
 import { GaugeSteelComponent } from './widgets/gauge-steel/gauge-steel.component';
@@ -107,6 +107,10 @@ import { SvgBooleanButtonComponent } from './widgets/svg-boolean-button/svg-bool
 import { SvgBooleanLightComponent } from './widgets/svg-boolean-light/svg-boolean-light.component';
 import { WidgetRmbComponent } from './widgets/widget-rmb/widget-rmb.component';
 import { SvgRmbComponent } from './widgets/svg-rmb/svg-rmb.component';
+import { WidgetXErrTrackComponent } from './widgets/widget-x-err-track/widget-x-err-track.component';
+import { SvgXErrTrackComponent } from './widgets/svg-x-err-track/svg-x-err-track.component';
+import { WidgetWaypointDistComponent } from './widgets/widget-waypoint-dist/widget-waypoint-dist.component';
+import { SvgWaypointDistComponent } from './widgets/svg-waypoint-dist/svg-waypoint-dist.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'page/0', pathMatch: 'full' },
@@ -177,8 +181,6 @@ const appNetworkInitializerFn = (appNetInitSvc: AppNetworkInitService) => {
     WidgetRaceTimerComponent,
     WidgetIframeComponent,
     WidgetLoginComponent,
-    WidgetRmbComponent,
-    SvgRmbComponent,
     SvgWindComponent,
     SvgAutopilotComponent,
     SvgSimpleLinearGaugeComponent,
@@ -211,7 +213,13 @@ const appNetworkInitializerFn = (appNetInitSvc: AppNetworkInitService) => {
     PathsOptionsComponent,
     DisplayDatetimeComponent,
     SvgBooleanButtonComponent,
-    SvgBooleanLightComponent
+    SvgBooleanLightComponent,
+    WidgetRmbComponent,
+    SvgRmbComponent,
+    WidgetXErrTrackComponent,
+    SvgXErrTrackComponent,
+    WidgetWaypointDistComponent,
+    SvgWaypointDistComponent
   ],
   imports: [
     BrowserModule,

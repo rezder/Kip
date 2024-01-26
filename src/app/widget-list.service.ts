@@ -18,6 +18,8 @@ import { WidgetAutopilotComponent } from "./widgets/widget-autopilot/widget-auto
 import { WidgetSimpleLinearComponent } from "./widgets/widget-simple-linear/widget-simple-linear.component";
 import { WidgetRaceTimerComponent } from './widgets/widget-race-timer/widget-race-timer.component';
 import { WidgetRmbComponent } from './widgets/widget-rmb/widget-rmb.component';
+import { WidgetXErrTrackComponent } from './widgets/widget-x-err-track/widget-x-err-track.component';
+import { WidgetWaypointDistComponent } from './widgets/widget-waypoint-dist/widget-waypoint-dist.component';
 
 class widgetInfo {
   name: string;
@@ -126,6 +128,16 @@ export class WidgetListService {
         name: 'WidgetRmbComponent',
         componentName: WidgetRmbComponent,
         description: 'Next Way Point Data Display'
+      },
+      {
+        name: 'WidgetXErrTrackComponent',
+        componentName: WidgetXErrTrackComponent,
+        description: 'Cross error track',
+      },
+      {
+        name: 'WidgetWayPointComponent',
+        componentName: WidgetWaypointDistComponent,
+        description: 'Waypoint distance'
       }
     ]
   };

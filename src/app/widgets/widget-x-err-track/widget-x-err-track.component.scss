@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin widget-x-err-track-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .xetLine{
+    fill: none;
+    stroke: mat.get-color-from-palette($primary, default);
+  }
+  .xetBoat{
+    fill: mat.get-color-from-palette($primary, default);
+    stroke: mat.get-color-from-palette($primary, default-contrast);
+  }
+
+}
+.xetWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

@@ -112,6 +112,8 @@
 @import 'app/widgets/widget-autopilot/widget-autopilot.component.scss';
 @import 'app/widgets/widget-wind/widget-wind.component.scss';
 @import 'app/widgets/widget-rmb/widget-rmb.component.scss';
+@import 'app/widgets/widget-x-err-track/widget-x-err-track.component.scss';
+@import 'app/widgets/widget-waypoint-dist/widget-waypoint-dist.component.scss';
 
 @mixin theme-components($theme,$isLight) {
   @include mat.all-component-themes($theme);
@@ -125,6 +127,8 @@
   @include theme-settings-sk($theme);
   @include theme-settings-config($theme);
   @include widget-rmb-theme($theme,$isLight);
+  @include widget-x-err-track-theme($theme);
+  @include widget-waypoint-dist-theme($theme);
 }
 
 @include theme-components($defaultTheme-light,true);

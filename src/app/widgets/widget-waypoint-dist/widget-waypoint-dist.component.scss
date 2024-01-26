@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin widget-waypoint-dist-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .wdLine{
+    fill: none;
+    stroke: mat.get-color-from-palette($primary, default);
+  }
+  .wdBoat{
+    fill: mat.get-color-from-palette($primary, default);
+    stroke: mat.get-color-from-palette($primary, default-contrast);
+  }
+
+}
+.wdWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
