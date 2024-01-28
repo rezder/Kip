@@ -70,6 +70,20 @@
             </mat-optgroup>
         </mat-select>
       </mat-form-field>
+      <mat-form-field *ngIf="(pathFormGroup.controls.convertUnitToSmall !== undefined)" class="fields" appearance="outline" floatLabel="always">
+        <mat-label>Display Small Units</mat-label>
+        <mat-select
+          placeholder="Select unit"
+          formControlName="convertUnitToSmall"
+          disableRipple
+          required>
+          <mat-optgroup *ngFor="let group of unitList.conversions" [label]="group.group">
+            <mat-option *ngFor="let unit of group.units" [value]="unit.measure">
+              {{unit.description}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
 </div>

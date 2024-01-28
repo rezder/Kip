@@ -1,0 +1,15 @@
+<div class="rmbWrapper">
+    <app-svg-rmb
+      [compassHeading]="currentHeading"
+	    [pointID]="pointID"
+      [pointBearing]="pointBearing"
+      [pointDist]="pointDist"
+      [pointVMG]="pointVMG"
+      [unitVMG]="widgetProperties.config.paths['pointVMGPath'].convertUnitTo"
+      [crossTrack]="crossTrack"
+      [unitLongD]="widgetProperties.config.paths['pointDistPath'].convertUnitTo"
+      [unitShortD]="widgetProperties.config.paths['pointDistPath'].convertUnitToSmall"
+      [waypointWarnDist]="widgetProperties.config.waypointWarnDist"
+      [crossTrackWarnDist]="widgetProperties.config.crossTrackWarnDist"
+    ></app-svg-rmb>
+</div>

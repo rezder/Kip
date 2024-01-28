@@ -1,0 +1,73 @@
+@use '@angular/material' as mat;
+
+@mixin widget-rmb-theme($theme,$isLight) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  //mat.get-theme-type does not exit in current version 14
+  // $isLight: mat.get-theme-type($theme)==light;
+
+
+  .rmbCompass {
+    @if $isLight {
+      fill: mat.get-color-from-palette($primary, default);
+      stroke: mat.get-color-from-palette($primary, darker)
+    } @else {
+      fill: mat.get-color-from-palette($primary, default);
+      stroke: mat.get-color-from-palette($primary, lighter)
+    }
+  }
+
+  .rmbCompassRotar {
+    fill: none;
+    @if $isLight {
+      stroke:mat.get-color-from-palette($primary, lighter);
+    } @else {
+      stroke:mat.get-color-from-palette($primary, darker);
+    }
+  }
+
+  .rmbCompassDash {
+    fill: none;
+    @if $isLight {
+      stroke: mat.get-color-from-palette($primary, lighter-contrast);
+    } @else {
+      stroke:mat.get-color-from-palette($primary, darker-contrast);
+    }
+  }
+
+  .rmbCompassText {
+    @if $isLight {
+      fill: mat.get-color-from-palette($primary, lighter-contrast);
+      stroke: mat.get-color-from-palette($primary, lighter-contrast);
+    } @else {
+      fill: mat.get-color-from-palette($primary, darker-contrast);
+      stroke: mat.get-color-from-palette($primary, darker-contrast);
+    }
+  }
+
+  .rmbDisp{
+    fill: none;
+    stroke: mat.get-color-from-palette($foreground, text);
+  }
+
+  .rmbDispText {
+    fill: mat.get-color-from-palette($foreground, text);
+    stroke: none;
+  }
+
+  .rmbCrossTrackLine {
+    fill: none;
+    stroke: mat.get-color-from-palette($warn, default);
+  }
+
+  .rmbCrossTrackBoat {
+    fill: mat.get-color-from-palette($warn, default);
+    stroke: mat.get-color-from-palette($warn, default-contrast);
+  }
+}
+.rmbWrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

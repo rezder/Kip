@@ -17,6 +17,7 @@ import { WidgetGaugeNgRadialComponent} from './widgets/widget-gauge-ng-radial/wi
 import { WidgetAutopilotComponent } from "./widgets/widget-autopilot/widget-autopilot.component";
 import { WidgetSimpleLinearComponent } from "./widgets/widget-simple-linear/widget-simple-linear.component";
 import { WidgetRaceTimerComponent } from './widgets/widget-race-timer/widget-race-timer.component';
+import { WidgetRmbComponent } from './widgets/widget-rmb/widget-rmb.component';
 
 class widgetInfo {
   name: string;
@@ -120,6 +121,11 @@ export class WidgetListService {
         name: 'WidgetTutorial',
         componentName: WidgetTutorialComponent,
         description: 'Tutorial'
+      },
+      {
+        name: 'WidgetRmbComponent',
+        componentName: WidgetRmbComponent,
+        description: 'Next Way Point Data Display'
       }
     ]
   };

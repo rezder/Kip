@@ -92,6 +92,21 @@ export abstract class BaseWidgetComponent {
       }
     })
   }
+  /**
+   * This method returns the unit to convert the
+   * data stream to for the pathkey.
+   * Overwrite this function in the widget to control
+   * data stream units. If set to default the unit service
+   * can be used to calculate the any units including the
+   * user choise at a later stage.
+   * @protected
+   * @param {string} pathName the path
+   * @return {*}  {String} the unit
+   * @memberof BaseWidgetComponent
+   */
+  protected unit(pathName: string): string{
+    return this.widgetProperties.config.paths[pathName].convertUnitTo
+  }
 
   /**
    * Use this method the subscribe to a Signal K data path Observable and receive a
@@ -113,7 +128,7 @@ export abstract class BaseWidgetComponent {
 
     const pathType = this.widgetProperties.config.paths[pathName].pathType;
     const path = this.widgetProperties.config.paths[pathName].path;
-    const convert = this.widgetProperties.config.paths[pathName].convertUnitTo;
+    const convert = this.unit(pathName);
     const widgetSample = this.widgetProperties.config.paths[pathName].sampleTime;
     const dataTimeout = this.widgetProperties.config.dataTimeout * 1000;
     const retryDelay = 5000;
@@ -207,7 +222,6 @@ export abstract class BaseWidgetComponent {
       this.dataSubscription.add(dataPipe$.subscribe(observer));
     }
   }
-
   private buildObserver(pathKey: string, subscribeNextFunction: ((value) => void)): Observer<pathRegistrationValue> {
     const observer: Observer<pathRegistrationValue> = {
       next: (value) => subscribeNextFunction(value),

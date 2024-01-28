@@ -95,6 +95,18 @@
             </div>
           </div>
           <!-- end sailgague -->
+          <!-- Rmb stuff -->
+          <div class="full-width" *ngIf="(widgetConfig.waypointWarnDist !== undefined)">
+            <mat-form-field class="minField" appearance="outline" floatLabel="always">
+              <mat-label>Warning distance to waypoint</mat-label>
+              <input matInput type="number" name="waypointWarnDist" formControlName="waypointWarnDist" placeholder="Enter or select number...">
+            </mat-form-field>
+            <mat-form-field class="maxField" appearance="outline" floatLabel="always">
+              <mat-label>Warning distance to rhumbleline</mat-label>
+              <input matInput type="number" name="crossTrackWarnDist" formControlName="crossTrackWarnDist" placeholder="Enter or select number...">
+            </mat-form-field>
+          </div>
+          <!-- End Rmb stuff -->
           <div class="full-width" *ngIf="(widgetConfig.minValue !== undefined)">
               <mat-form-field class="minField" appearance="outline" floatLabel="always">
                 <mat-label>Minimum Value</mat-label>

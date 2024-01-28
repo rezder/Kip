@@ -105,7 +105,8 @@ import { PathsOptionsComponent } from './widget-config/paths-options/paths-optio
 import { DisplayDatetimeComponent } from './widget-config/display-datetime/display-datetime.component';
 import { SvgBooleanButtonComponent } from './widgets/svg-boolean-button/svg-boolean-button.component';
 import { SvgBooleanLightComponent } from './widgets/svg-boolean-light/svg-boolean-light.component';
-
+import { WidgetRmbComponent } from './widgets/widget-rmb/widget-rmb.component';
+import { SvgRmbComponent } from './widgets/svg-rmb/svg-rmb.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'page/0', pathMatch: 'full' },
@@ -176,6 +177,8 @@ const appNetworkInitializerFn = (appNetInitSvc: AppNetworkInitService) => {
     WidgetRaceTimerComponent,
     WidgetIframeComponent,
     WidgetLoginComponent,
+    WidgetRmbComponent,
+    SvgRmbComponent,
     SvgWindComponent,
     SvgAutopilotComponent,
     SvgSimpleLinearGaugeComponent,

@@ -111,8 +111,14 @@ export class ModalPathControlConfigComponent implements OnInit, OnChanges, OnDes
         this.unitList = this.signalKService.getConversionsForPath(this.pathFormGroup.controls['path'].value); // array of Group or Groups: "angle", "speed", etc...
         if (setValues) {
           this.pathFormGroup.controls['convertUnitTo'].setValue(this.unitList.default, {onlySelf: true});
+          if (this.pathFormGroup.controls['convertUnitToSmall'] !== undefined){
+            this.pathFormGroup.controls['convertUnitToSmall'].setValue(this.unitList.default, {onlySelf: true});
+          }
         }
         this.pathFormGroup.controls['convertUnitTo'].enable({onlySelf: true});
+        if (this.pathFormGroup.controls['convertUnitToSmall'] !== undefined){
+          this.pathFormGroup.controls['convertUnitToSmall'].enable({onlySelf: true});
+        }
       }
 
       if (Object.keys(pathObject.sources).length == 1) {
@@ -142,6 +148,10 @@ export class ModalPathControlConfigComponent implements OnInit, OnChanges, OnDes
     if (this.pathFormGroup.controls['pathType'].value == 'number') { // convertUnitTo control not present unless pathType is number
       this.pathFormGroup.controls['convertUnitTo'].reset('', {onlySelf: true});
       this.pathFormGroup.controls['convertUnitTo'].disable({onlySelf: true});
+      if (this.pathFormGroup.controls['convertUnitToSmall'] !== undefined){
+        this.pathFormGroup.controls['convertUnitToSmall'].reset('', {onlySelf: true});
+        this.pathFormGroup.controls['convertUnitToSmall'].disable({onlySelf: true});
+      }
     }
   }
 
