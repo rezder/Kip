@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewChecked }
 
 import { IZoneState } from "../../app-settings.interfaces";
 import { BaseWidgetComponent } from '../../base-widget/base-widget.component';
+import { UnitsService } from '../../units.service';
 
 @Component({
   selector: 'app-widget-numeric',
@@ -16,6 +17,9 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
 
 
   dataValue: number = null;
+  dataValueSmall: number = null;
+  dataValueDisp: number = null;
+  dataUnitDisp: string = null;
   IZoneState: IZoneState = null;
   maxValue: number = null;
   minValue: number = null;
@@ -47,7 +51,9 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
           pathType: "number",
           isPathConfigurable: true,
           convertUnitTo: "unitless",
-          sampleTime: 500
+          sampleTime: 500,
+          useUnitSmall: false,
+          convertUnitToSmall: "unitless"
         }
       },
       showMax: false,
@@ -62,39 +68,45 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
 
   ngOnInit() {
     this.validateConfig();
+    this.getColors(this.widgetProperties.config.textColor);
     this.canvasValCtx = this.canvasEl.nativeElement.getContext('2d');
     this.canvasMMCtx = this.canvasMM.nativeElement.getContext('2d');
     this.canvasBGCtx = this.canvasBG.nativeElement.getContext('2d');
-    this.getColors(this.widgetProperties.config.textColor);
+    this.dataUnitDisp = this.widgetProperties.config.paths['numericPath'].convertUnitTo;
+
     this.observeDataStream('numericPath', newValue => {
-        this.dataValue = newValue.value;
-        // init min/max
-        if (this.minValue === null) { this.minValue = this.dataValue; }
-        if (this.maxValue === null) { this.maxValue = this.dataValue; }
-        if (this.dataValue > this.maxValue) { this.maxValue = this.dataValue; }
-        if (this.dataValue < this.minValue) { this.minValue = this.dataValue; }
 
-        this.IZoneState = newValue.state;
-
-        //start flashing if alarm
-        if ((this.IZoneState == IZoneState.alarm || this.IZoneState == IZoneState.warning) && !this.flashInterval) {
-          this.flashInterval = setInterval(() => {
-            this.flashOn = !this.flashOn;
-            this.updateCanvas();
-          }, 350); // used to flash stuff in alarm
-        } else if (this.IZoneState == IZoneState.normal) {
-          // stop alarming if not in alarm state
-          if (this.flashInterval) {
-            clearInterval(this.flashInterval);
-            this.flashInterval = null;
-          }
+      this.dataValue = this.unitsService.convertUnit(this.widgetProperties.config.paths['numericPath'].convertUnitTo, newValue.value);
+      this.dataValueDisp=this.dataValue;
+      let isNewUnit: boolean = false;
+      if (this.widgetProperties.config.paths['numericPath'].useUnitSmall){
+        this.dataValueSmall = this.unitsService.convertUnit(this.widgetProperties.config.paths['numericPath'].convertUnitToSmall, newValue.value);
+        if ((this.dataValue < 1) && (this.dataValue > -1)){
+          this.dataValueDisp = this.dataValueSmall;
+          isNewUnit = this.updUnitDisp(this.widgetProperties.config.paths['numericPath'].convertUnitToSmall);
+        }else{
+          this.dataValueDisp = this.dataValue;
+          isNewUnit = this.updUnitDisp(this.widgetProperties.config.paths['numericPath'].convertUnitTo);
         }
-
-        this.updateCanvas();
       }
-    );
+      this.updateMaxMin(this.dataValue);
+      this.updateIZoneState(newValue.state);
+      this.updateCanvas();
+      if (isNewUnit){
+        this.updateCanvasBG();
+      }
+    });
 
     this.resizeWidget();
+  }
+
+  private updUnitDisp(newUnit: string): boolean{
+    let isUpd: boolean = false;
+    if (newUnit !== this.dataUnitDisp){
+      this.dataUnitDisp = newUnit;
+      isUpd = true;
+    }
+    return isUpd;
   }
 
   ngOnDestroy() {
@@ -108,6 +120,29 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
 
   ngAfterViewChecked() {
     this.resizeWidget();
+  }
+  private updateIZoneState(newState: IZoneState): void{
+    this.IZoneState = newState;
+    //start flashing if alarm
+    if ((this.IZoneState == IZoneState.alarm || this.IZoneState == IZoneState.warning) && !this.flashInterval) {
+      this.flashInterval = setInterval(() => {
+        this.flashOn = !this.flashOn;
+        this.updateCanvas();
+      }, 350); // used to flash stuff in alarm
+    } else if (this.IZoneState == IZoneState.normal) {
+      // stop alarming if not in alarm state
+      if (this.flashInterval) {
+        clearInterval(this.flashInterval);
+        this.flashInterval = null;
+      }
+    }
+  }
+
+  private updateMaxMin(dataValue: number): void{
+    if (this.minValue === null) { this.minValue = dataValue; }
+    if (this.maxValue === null) { this.maxValue = dataValue; }
+    if (dataValue > this.maxValue) { this.maxValue = dataValue; }
+    if (dataValue < this.minValue) { this.minValue = dataValue; }
   }
 
   private getColors(color: string): void {
@@ -156,7 +191,6 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
       this.updateCanvas();
       this.updateCanvasBG();
     }
-
   }
 
 
@@ -166,7 +200,7 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
   private updateCanvas() {
     if (this.canvasValCtx) {
       this.canvasValCtx.clearRect(0,0,this.canvasEl.nativeElement.width, this.canvasEl.nativeElement.height);
-      this.drawValue();
+      this.drawValue(this.dataValueDisp);
       if (this.widgetProperties.config.showMax || this.widgetProperties.config.showMin) {
         this.canvasMMCtx.clearRect(0,0,this.canvasMM.nativeElement.width, this.canvasMM.nativeElement.height);
         this.drawMinMax();
@@ -178,22 +212,36 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
     if (this.canvasBGCtx) {
       this.canvasBGCtx.clearRect(0,0,this.canvasBG.nativeElement.width, this.canvasBG.nativeElement.height);
       this.drawTitle();
-      this.drawUnit();
+      this.drawUnit(this.dataUnitDisp);
     }
   }
 
-  private drawValue() {
+  private formatNumberValueDisp(v: number): string {
+    let vStr: string;
+    if (this.dataUnitDisp !== this.widgetProperties.config.paths['numericPath'].convertUnitTo){
+      if (v == null || v === undefined || typeof(v) != "number") {
+        vStr= v.toString();
+      }else{
+        vStr = v.toFixed(0);
+      }
+    }else{
+      vStr = this.applyDecorations(this.formatWidgetNumberValue(v));
+    }
+    return vStr;
+  }
+
+  private drawValue(dataValue: number) {
     const maxTextWidth = Math.floor(this.canvasEl.nativeElement.width * 0.85);
     const maxTextHeight = Math.floor(this.canvasEl.nativeElement.height * 0.85);
     let valueText: string;
 
-    if (this.dataValue !== null) {
+    if (dataValue !== null) {
       //TODO: Check for lon/lat special case -- ugly setup. we should probably have a lon/lat widget for this!
-      let cUnit: string = this.widgetProperties.config.paths['numericPath'].convertUnitTo;
+      let cUnit: string = this.dataUnitDisp;
       if (cUnit == 'latitudeSec' || cUnit == 'latitudeMin' || cUnit == 'longitudeSec' || cUnit == 'longitudeMin') {
-        valueText = this.dataValue.toString();
+        valueText = dataValue.toString();
       } else {
-        valueText = this.applyDecorations(this.formatWidgetNumberValue(this.dataValue));
+        valueText = this.formatNumberValueDisp(dataValue);
       }
     } else {
       valueText = "--";
@@ -284,19 +332,19 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
     this.canvasBGCtx.fillText(this.widgetProperties.config.displayName,this.canvasBG.nativeElement.width*0.03,this.canvasBG.nativeElement.height*0.03, maxTextWidth);
   }
 
-  private drawUnit() {
-    if (this.widgetProperties.config.paths['numericPath'].convertUnitTo == 'unitless') { return; }
-    if (this.widgetProperties.config.paths['numericPath'].convertUnitTo.startsWith('percent')) { return; }
-    if (this.widgetProperties.config.paths['numericPath'].convertUnitTo == 'ratio') { return; }
-    if (this.widgetProperties.config.paths['numericPath'].convertUnitTo.startsWith('lat')) { return; }
-    if (this.widgetProperties.config.paths['numericPath'].convertUnitTo.startsWith('lon')) { return; }
+  private drawUnit(unit: string) {
+    if (unit == 'unitless') { return; }
+    if (unit.startsWith('percent')) { return; }
+    if (unit == 'ratio') { return; }
+    if (unit.startsWith('lat')) { return; }
+    if (unit.startsWith('lon')) { return; }
     const maxTextWidth = Math.floor(this.canvasBG.nativeElement.width * 0.35);
     const maxTextHeight = Math.floor(this.canvasBG.nativeElement.height * 0.15);
 
     // start with large font, no sense in going bigger than the size of the canvas :)
     let fontSize = maxTextHeight;
     this.canvasBGCtx.font = "bold " + fontSize.toString() + "px Arial";
-    let measure = this.canvasBGCtx.measureText(this.widgetProperties.config.paths['numericPath'].convertUnitTo).width;
+    let measure = this.canvasBGCtx.measureText(unit).width;
 
     // if we are not too wide, we stop there, maxHeight was our limit... if we're too wide, we need to scale back
     if (measure > maxTextWidth) {
@@ -305,7 +353,7 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
       this.canvasBGCtx.font = "bold " + fontSize.toString() + "px Arial";
     }
     // now decrease by 1 in case font is still too big
-    while (this.canvasBGCtx.measureText(this.widgetProperties.config.paths['numericPath'].convertUnitTo).width > maxTextWidth && fontSize > 0) {
+    while (this.canvasBGCtx.measureText(unit).width > maxTextWidth && fontSize > 0) {
       fontSize--;
       this.canvasBGCtx.font = "bold " + fontSize.toString() + "px Arial";
     }
@@ -313,7 +361,7 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
     this.canvasBGCtx.textAlign = "right";
     this.canvasBGCtx.textBaseline="bottom";
     this.canvasBGCtx.fillStyle = this.valueColor;
-    this.canvasBGCtx.fillText(this.widgetProperties.config.paths['numericPath'].convertUnitTo,this.canvasBG.nativeElement.width*0.97,this.canvasBG.nativeElement.height*0.97, maxTextWidth);
+    this.canvasBGCtx.fillText(unit,this.canvasBG.nativeElement.width*0.97,this.canvasBG.nativeElement.height*0.97, maxTextWidth);
   }
 
   private drawMinMax() {
@@ -381,5 +429,22 @@ export class WidgetNumericComponent extends BaseWidgetComponent implements OnIni
         break;
     }
     return txtValue;
+  }
+  /**
+   * This method returns the unit to convert the
+   * data stream for the pathkey.
+
+   * @param {string} pathKey the path
+   * @return {*}  {string} the unit
+   *@override
+   */
+  protected unit(pathKey: string): string{
+    let res: string;
+    if ('numericPath' == pathKey){
+      res = 'unitless';
+    }else{
+      res = super.unit(pathKey);
+    }
+    return res
   }
 }

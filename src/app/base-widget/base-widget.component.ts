@@ -109,6 +109,22 @@ export abstract class BaseWidgetComponent {
   }
 
   /**
+   * This method returns the unit to convert the
+   * data stream to for the pathkey.
+   * Overwrite this function in the widget to control
+   * data stream units. If set to unitless the unit service
+   * can be used to calculate any units including the
+   * user choise at a later stage.
+   * @protected
+   * @param {string} pathName the path
+   * @return {*}  {String} the unit
+   * @memberof BaseWidgetComponent
+   */
+  protected unit(pathName: string): string{
+    return this.widgetProperties.config.paths[pathName].convertUnitTo
+  }
+
+  /**
    * Use this method the subscribe to a Signal K data path Observable and receive a
    * live data stream from the server. This method apply
    * a combination of widgetProperties.config and widgetProperties.config.paths[pathName]

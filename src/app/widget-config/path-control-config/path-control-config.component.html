@@ -70,13 +70,33 @@
             </mat-optgroup>
         </mat-select>
       </mat-form-field>
-      <mat-form-field *ngIf="(pathFormGroup.controls.convertUnitToSmall !== undefined)" class="fields" appearance="outline" floatLabel="always">
+      <mat-form-field *ngIf="(pathFormGroup.controls.convertUnitToSmall !== undefined &&  pathFormGroup.controls.useUnitSmall === undefined)" class="fields" appearance="outline" floatLabel="always">
         <mat-label>Display Small Units</mat-label>
         <mat-select
           placeholder="Select unit"
           formControlName="convertUnitToSmall"
-          disableRipple
           required>
+          <mat-optgroup *ngFor="let group of unitList.conversions" [label]="group.group">
+            <mat-option *ngFor="let unit of group.units" [value]="unit.measure">
+              {{unit.description}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="pathFormGroup.controls.convertUnitToSmall !== undefined && pathFormGroup.controls.useUnitSmall !== undefined" class="unitFieldSmall">
+      <mat-checkbox
+        formControlName="useUnitSmall"
+        class="fields"
+        class="flex-checkbox-30"
+      >
+        Use small units
+      </mat-checkbox>
+      <mat-form-field class="fields" appearance="outline" floatLabel="always">
+        <mat-label>Display Format Small Units</mat-label>
+        <mat-select
+          placeholder="Select unit"
+          formControlName="convertUnitToSmall">
           <mat-optgroup *ngFor="let group of unitList.conversions" [label]="group.group">
             <mat-option *ngFor="let unit of group.units" [value]="unit.measure">
               {{unit.description}}
