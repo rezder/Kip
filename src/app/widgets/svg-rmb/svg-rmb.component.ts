@@ -87,8 +87,10 @@ export class SvgRmbComponent implements AfterViewInit {
       isUpdateTOA = true;
       let pointDistM = changes.pointDist.currentValue;
       let pointDistLong = this.unitsService.convertUnit(this.unitLongD, pointDistM);
+      let pointDistShort = this.unitsService.convertUnit(this.unitShortD, pointDistM);
+
       if (pointDistLong < 1) {
-        this.pointDistStr = this.unitsService.convertUnit(this.unitShortD, pointDistM).toFixed(0);
+        this.pointDistStr = pointDistShort.toFixed(0);
         this.pointDistUnit = this.unitShortD;
       } else {
         this.pointDistStr = pointDistLong.toFixed(1);
@@ -109,14 +111,16 @@ export class SvgRmbComponent implements AfterViewInit {
     if (changes.crossTrack && changes.crossTrack.currentValue !== null) {
       var cv = Number(changes.crossTrack.currentValue.toFixed(0));
       if (cv == 0){
-        this.crossTrackRightStr = "";
-        this.crossTrackLeftStr = "";
+        this.crossTrackRightStr = "0";
+        this.crossTrackLeftStr = "0";
         this.crossTrackWarn = false;
       }else if (cv < 0){
-        this.crossTrackLeftStr = this.truncateNum(999,(cv*-1).toFixed(0));
-        this.warnCrossCheck(cv*-1);
+        this.crossTrackLeftStr = this.truncateNum(999,(-cv).toFixed(0));
+        this.crossTrackRightStr = "";
+        this.warnCrossCheck(-cv);
       }else if (cv > 0){
         this.crossTrackRightStr = this.truncateNum(999,cv.toFixed(0));
+        this.crossTrackLeftStr = "";
         this.warnCrossCheck(cv);
       }
     }

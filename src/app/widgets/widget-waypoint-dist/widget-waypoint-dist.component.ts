@@ -25,7 +25,7 @@ export class WidgetWaypointDistComponent extends BaseWidgetComponent implements 
           sampleTime: 500
         },
       },
-      waypointWarnDist: 25,
+      waypointWarnDist: 100,
       waypointBoatLenght:8,
       enableTimeout: false,
       dataTimeout: 5

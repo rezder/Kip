@@ -63,7 +63,7 @@ export class WidgetRmbComponent extends BaseWidgetComponent implements OnInit, O
           source: 'default',
           pathType: "number",
           isPathConfigurable: true,
-          convertUnitTo: "m/s",
+          convertUnitTo: "knots",
           sampleTime: 500
         },
         "crossTrackPath": {
