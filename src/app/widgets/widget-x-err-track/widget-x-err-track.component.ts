@@ -25,7 +25,7 @@ export class WidgetXErrTrackComponent extends BaseWidgetComponent implements OnI
           sampleTime: 500
         },
       },
-      crossTrackWarnDist: 25,
+      crossTrackWarnDist: 100,
       crossTrackBeam:3,
       enableTimeout: false,
       dataTimeout: 5
